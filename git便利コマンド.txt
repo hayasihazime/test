@@ -13,3 +13,6 @@ git reset --hard [[置き換えたいコミットのハッシュ]]
 git checkout .
 ドットで作業ディレクトリのheadになる
 
+
+●マージされたブランチの一覧を取得
+git branch –merged
