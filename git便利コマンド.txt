@@ -16,3 +16,8 @@ git checkout .
 
 ●マージされたブランチの一覧を取得
 git branch –merged
+
+●管理中のファイルの変更を無視する
+git update-index --assume-unchanged [ファイル名]
+確認は、下記コマンドで管理ファイルの一覧の先頭が小文字になっていればよい
+git ls-files -v 
