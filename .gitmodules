@@ -1,0 +1,9 @@
+[submodule "closure-library"]
+	path = closure-library
+	url = https://code.google.com/p/closure-library/
+[submodule "sub"]
+	path = sub
+	url = https://code.google.com/p/closure-library/
+[submodule "local-create-test"]
+	path = local-create-test
+	url = https://github.com/hayasihazime/local-create-test.git
