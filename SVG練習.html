@@ -1,0 +1,67 @@
+<html>
+<body>
+
+<script langlate="javascript" type="text/javascript">
+<!--
+
+
+-->
+</script>
+
+
+<h2>SVG描画練習ページ</h2>
+
+SVG内のイベント伝播検証<br/>
+<svg width="200" height="200" onclick="console.log('svg');" style="border: solid 1px red; background-color:orange;">
+	<rect x="50" y="50" width="100" height="100" fill="skyBlue" stroke="red" stroke-linecap="round" onclick="console.log('rect1');" style="cursor:pointer;cursor:hand;"/>
+	<rect x="100" y="100" width="100" height="100" fill="blue" stroke="red" onclick="console.log('rect2');"/>
+	<image x="0" y="0" width="50" height="50" image-rendering="optimizeQuality" preserveAspectRatio="none"
+   xlink:href="http://kizitora.jp/wp-content/uploads/imgs/5/6/563dcd06.gif" onclick="console.log('image');" />
+</svg>
+
+<hr style="border:solid 3px gold; margin:50px 0"/>
+
+<div style="width:300; background-color:blue; ;border:solid 2px red; overflow:hidden; padding:10px">
+aaa
+	<div style="width:300; height:30px; background-color:green;;border:solid 2px red;overflow:scroll; padding:20px ">height指定すれば、表示領域が決まるので、overflowのscrollが適用できる。あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ</div>
+</div>
+
+<hr style="border:solid 3px gold; margin:50px 0"/>
+SVG領域をはみ出した場合のRECTの表示検証（overflow：hiddenと同じ表示）
+<svg width="100" height="100" >
+	<rect x="0" y="0" width="110" height="110" fill="skyBlue" stroke="red"/>
+</svg>
+
+<hr style="border:solid 3px gold; margin:50px 0"/>
+
+
+
+<div style="width:300; background-color:blue; ;border:solid 2px red; overflow:hidden; padding:10px">
+svgタグとoverflowスクロールの検証
+<svg height="100" width="3000">
+	<rect x="10" y="10" width="200" height="200" fill="oldlace"/>
+</svg>
+
+</div>
+
+<hr style="border:solid 3px gold; margin:50px 0"/>
+<svg width="400" height="400" >
+	<rect width="200" height="200" fill="red"/>
+	<rect x="100" y="100" width="200" height="200" fill="oldlace"/>
+	<rect x="300" y="300" width="200" height="500" fill="green"/>
+</svg>
+<svg width="400" height="400" >
+	<rect width="200" height="200" fill="red"/>
+	<rect x="100" y="100" width="200" height="200" fill="oldlace"/>
+	<rect x="300" y="300" width="200" height="500" fill="green"/>
+</svg>
+
+<svg width="800" height="800" style="position:relative; top:-400; left:100">
+	<rect width="200" height="200" fill="red"/>
+	<rect x="100" y="100" width="200" height="200" fill="oldlace"/>
+	<rect x="300" y="300" width="200" height="500" fill="green"/>
+</svg>
+
+</body>
+
+<html>
