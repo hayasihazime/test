@@ -1,16 +1,130 @@
 <html>
+<head>
+<style type="text/css">
+
+</style>
 
 <body>
 
+<h2>javascript検証用ページ</h2>
+
+<script>
+//数値と文字の変換
+var i1 = 1;
+var i2 = 2;
+console.log(String(i1) + "+" +  String(i2) + "=" + (i1 + i2));
+</script>
+
+<div height="400" style="background-color:oldlace;" id="insertArea">
+表示領域
+</div>
+
+<hr style=" border-style:dotted;  "/>
+
+<h3>匿名イベントの設定、解除検証</h3>
+
+<div id="area2" style="background-color:pink; padding:20px">クリックでイベントがあれば実行する領域</div>
+<div style="background-color:green; padding:20px" onclick=" (function(){ setEvent(event); })();">クリックでピンクエリアにイベントを設定</div>
+<div style="background-color:blue; padding:20px" onclick="eventOverRide('aaaa')">クリックでピンクエリアのイベントを削除</div>
+
+<script>
+function eventOverRide(param){
+	return function(event){
+		console.log(e);
+		console.log(param);
+	};
+};
+
+</script>
+
+<hr style="border:solid 3px gold; margin:50px 0"/>
+
+<h3>イベントの設定、解除検証</h3>
+
+<div id="area1" style="background-color:pink; padding:20px">クリックでイベントがあれば実行する領域</div>
+<div style="background-color:green; padding:20px" onclick="setEvent(event)">クリックでピンクエリアにイベントを設定</div>
+<div style="background-color:blue; padding:20px" onclick="removeEvent(event)">クリックでピンクエリアのイベントを削除</div>
+
+<script>
+eventTargetTest = function(e){
+	alert("イベント設定されている");
+};
+
+
+setEvent = function(e){
+	alert("event set " + e	);
+	var element =document.getElementById("area1");
+	element.addEventListener("click", eventTargetTest,false);
+	//自分自身が見える箇所ならば、下記記述で匿名関数のイベントを止めることが出来る
+	//element.removeEventListener("click", arguments.callee,false);
+};
+removeEvent = function(e){
+	alert("remove event");
+	var element =document.getElementById("area1");
+
+
+	element.removeEventListener("click", eventTargetTest, false);
+	//console.log(arguments.callee);
+	//匿名関数の設定（listenがメソッド外だと下記記述で止めることはできない
+	//element.removeEventListener("click", arguments.callee,false);
+};
+</script>
+
+<hr style="border:solid 3px gold; margin:50px 0"/>
+
+<h3>イベント伝達</h3>
+バブリング検証
+<div style="background-color:oldlace; padding:20px" onclick="alert('div1')">1番上位のDIVタグ
+	<div style="background-color:orange; padding:20px" onclick="alert('div2')">2番上位のDIVタグ
+		<div style="background-color:green; padding:20px" onclick="alert('div3')">3番上位のDIVタグ</div>
+	</div>
+</div>
+
+<hr style="border:solid 3px gold; margin:50px 0"/>
+キャプチャリング検証（イベント伝播を止める）
+<div style="background-color:oldlace; padding:20px" onclick="console.log('div1')">1番上位のDIVタグ
+	<div style="background-color:orange; padding:20px" onclick="console.log('div2')">2番上位のDIVタグ
+		<div style="background-color:green; padding:20px" onclick="alertFunction(event)">3番上位のDIVタグ</div>
+	</div>
+</div>
+<hr style="border:solid 3px gold; margin:50px 0"/>
+エレメントが重なった場合のキャプチャリング検証
+<div style="background-color:oldlace; padding:20px" onclick="console.log('div1')">1番上位のDIVタグ
+	<div style="background-color:orange; padding:20px" onclick="console.log('div2')">2番上位のDIVタグ
+		<div style="background-color:green; padding:20px" onclick="alertFunction(event)">3番上位のDIVタグ</div>
+	</div>
+</div>
+
+<div style="position:absolute; top:138; left:864;">メニュー</div>
 <script langlate="javascript" type="text/javascript">
 <!--
 
+function alertFunction(e){
+	console.log(e.target);
+	//e.preventDefault();	//ブラウザの挙動を止めるだけ
+	e.stopPropagation();	//親エレメントへの伝播を止める
+	};
 
-var getPower = function(add){
- var base = "焼酎";
- alert(bose + add);
- };
- getPower("お茶");
+var element = document.createElement("div");
+var str = document.createTextNode("あいうえお");	// 生成する要素の値（文字列）
+element.appendChild(str);					// 生成する要素の作成（要素に値を追加）
+element.setAttribute("testKey","testName");
+element.setAttribute("stroke","red");
+document.body.appendChild(element);
+
+var svg = document.createElement("svg");
+svg.setAttribute("width","400");
+svg.setAttribute("height","400");
+var rect = document.createElement("rect");
+rect.setAttribute("width","200");
+rect.setAttribute("height","100");
+rect.setAttribute("stroke","red");
+
+var parentElement = document.getElementById("insertArea");
+parentElement.appendChild(svg);
+svg.appendChild(rect);
+
+
 
 
 var func1 = function(){
@@ -35,7 +149,8 @@ types.forEach(function(type) {
 </script>
 
 
-<h2>javascript検証用ページ</h2>
+
+
 
 </body>
 
